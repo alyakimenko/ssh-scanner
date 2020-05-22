@@ -4,7 +4,6 @@ import (
 	"log"
 	"os/user"
 	"sync"
-	"time"
 
 	"gitlab.com/astroproxy/ssh-scanner/pkg/handler"
 	"gitlab.com/astroproxy/ssh-scanner/pkg/interactive"
@@ -34,7 +33,6 @@ func main() {
 			ssh.KeyboardInteractive(interactive.SSHInteractive),
 		},
 		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
-		Timeout: 2000*time.Millisecond,
 	}
 
 	addresses, err := parser.ParseAddrFile(*flags.AddrFile)
