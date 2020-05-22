@@ -15,24 +15,30 @@ import (
 func main() {
 	flags := parseFlags()
 
-	currentUser, err := user.Current()
-	if err != nil {
-		log.Fatal("Error occurred during getting current user: ", err)
-	}
+	var rsaSigner ssh.Signer
+	if *flags.RSA {
+		currentUser, err := user.Current()
+		if err != nil {
+			log.Fatal("Error occurred during getting current user: ", err)
+		}
 
-	rsa, err := keys.TryRSA(currentUser, *flags.RSAPassphrase)
-	if err != nil {
-		log.Fatal("Error occurred during parsing RSA: ", err)
+		rsaSigner, err = keys.TryRSA(currentUser, *flags.RSAPassphrase)
+		if err != nil {
+			log.Fatal("Error occurred during parsing RSA: ", err)
+		}
 	}
 
 	config := &ssh.ClientConfig{
 		User: "root",
 		Auth: []ssh.AuthMethod{
 			ssh.Password("root"),
-			ssh.PublicKeys(rsa),
 			ssh.KeyboardInteractive(interactive.SSHInteractive),
 		},
 		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
+	}
+
+	if rsaSigner != nil {
+		config.Auth = append(config.Auth, ssh.PublicKeys(rsaSigner))
 	}
 
 	addresses, err := parser.ParseAddrFile(*flags.AddrFile)
