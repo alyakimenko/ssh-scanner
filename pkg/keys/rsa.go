@@ -2,9 +2,10 @@ package keys
 
 import (
 	"fmt"
-	"golang.org/x/crypto/ssh"
 	"io/ioutil"
 	"os/user"
+
+	"golang.org/x/crypto/ssh"
 )
 
 func TryRSA(user *user.User, passphrase string) (ssh.Signer, error) {

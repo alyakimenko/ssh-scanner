@@ -2,9 +2,10 @@ package handler
 
 import (
 	"bytes"
+	"sync"
+
 	"gitlab.com/astroproxy/ssh-scanner/pkg/proxy"
 	"golang.org/x/crypto/ssh"
-	"sync"
 )
 
 type Data struct {
