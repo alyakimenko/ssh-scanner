@@ -2,6 +2,7 @@ package handler
 
 import (
 	"bytes"
+	"fmt"
 	"sync"
 
 	"gitlab.com/astroproxy/ssh-scanner/pkg/proxy"
@@ -49,9 +50,10 @@ func HandleSSH(wg *sync.WaitGroup, addrChan chan<- *Data, proxyAddr string, sshA
 	// the remote side using the Run method.
 	var b bytes.Buffer
 	session.Stdout = &b
-	if err := session.Run("ls"); err != nil {
+	if err := session.Run("cat /etc/hostname"); err != nil {
 		addrChan <- &Data{Addr: sshAddr, Err: err}
 		return
 	}
+	fmt.Printf("[cat /etc/hostname] Hostname of %s is %s", sshAddr, b.String())
 	addrChan <- &Data{Addr: sshAddr, IsAvailable: true}
 }
