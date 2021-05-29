@@ -1,9 +1,9 @@
-module gitlab.com/astroproxy/ssh-scanner
+module github.com/alyakimenko/ssh-scanner
 
 go 1.14
 
 require (
-	golang.org/x/crypto v0.0.0-20200510223506-06a226fb4e37
-	golang.org/x/net v0.0.0-20200520182314-0ba52f642ac2
-	golang.org/x/sys v0.0.0-20200519105757-fe76b779f299 // indirect
+	golang.org/x/crypto v0.0.0-20210513164829-c07d793c2f9a
+	golang.org/x/net v0.0.0-20210525063256-abc453219eb5
+	golang.org/x/sys v0.0.0-20210525143221-35b2ab0089ea // indirect
 )

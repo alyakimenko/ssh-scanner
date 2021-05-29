@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"sync"
 
-	"gitlab.com/astroproxy/ssh-scanner/pkg/proxy"
+	"github.com/alyakimenko/ssh-scanner/pkg/proxy"
 	"golang.org/x/crypto/ssh"
 )
 

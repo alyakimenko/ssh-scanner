@@ -5,10 +5,10 @@ import (
 	"os/user"
 	"sync"
 
-	"gitlab.com/astroproxy/ssh-scanner/pkg/handler"
-	"gitlab.com/astroproxy/ssh-scanner/pkg/interactive"
-	"gitlab.com/astroproxy/ssh-scanner/pkg/keys"
-	"gitlab.com/astroproxy/ssh-scanner/pkg/parser"
+	"github.com/alyakimenko/ssh-scanner/pkg/handler"
+	"github.com/alyakimenko/ssh-scanner/pkg/interactive"
+	"github.com/alyakimenko/ssh-scanner/pkg/keys"
+	"github.com/alyakimenko/ssh-scanner/pkg/parser"
 	"golang.org/x/crypto/ssh"
 )
 
